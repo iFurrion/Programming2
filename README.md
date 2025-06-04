@@ -21,3 +21,6 @@ Programming 2 Test
 - [ ] pytest for possible cases
 - [ ] upload to github
 - [ ] send to prof
+ ----------------------------------TASK 2 ------------------------------------
+- [ ] use random and seed values to get 10 values between 1 and 6, then 100, 1000, 10000, 500000 values. for each case use plot decorator  you will have 5 plots at the end
+
