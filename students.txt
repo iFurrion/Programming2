@@ -1,6 +1,0 @@
-John Doe,Math,85
-Jane Smith,Science,90
-Alice Brown,Math,78
-Bob Gray,History,65
-Charlie Black,Math,48
-Charlie Black,Math,48
