@@ -1,3 +1,3 @@
-Alice
-Bob
-Charlie
+Alice Johnson, 87
+Bob Smith, 76
+Catherine Lee, 92
