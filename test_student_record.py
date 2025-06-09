@@ -2,12 +2,12 @@ import os
 import pytest
 from student_record import StudentFile, ColoredStudentFile
 
-# Helper to create a sample text file
+
 def create_sample_file(filename, lines):
     with open(filename, "w") as f:
         for line in lines:
             f.write(line + "\n")
-
+## Using pytest fixture to create sample files for testing
 @pytest.fixture
 def sample_files(tmp_path):
     math = tmp_path / "math.txt"
@@ -30,6 +30,7 @@ def sample_files(tmp_path):
 
     return str(math), str(science), str(history)
 
+##methods to test the functionality of the StudentFile class
 def test_file_exists(sample_files):
     math, science, _ = sample_files
     assert StudentFile.file_exists(math)
@@ -48,7 +49,7 @@ def test_concat_two_files(sample_files, tmp_path):
     sf2 = StudentFile(science)
     combined = sf1 + sf2
     assert "Charlie" in combined.students
-    assert combined.students["Alice"] == 90  # Highest between 90 and 88
+    assert combined.students["Alice"] == 90  
     assert os.path.exists(combined.filename)
 
 def test_concat_multiple(sample_files):
@@ -59,7 +60,7 @@ def test_concat_multiple(sample_files):
     combined = sf1.concat_multiple(sf2, sf3)
 
     assert "David" in combined.students
-    assert combined.students["Alice"] == 90  # Best score retained
+    assert combined.students["Alice"] == 90  
     assert len(combined.students) == 4
 
 def test_colored_student_file_str(sample_files):
@@ -71,6 +72,6 @@ def test_classmethod_from_subject(tmp_path):
     test_file = tmp_path / "english.txt"
     create_sample_file(test_file, ["Eve, 99"])
     sf = StudentFile.from_subject("english")
-    sf.filename = str(test_file)  # rebind path if needed
+    sf.filename = str(test_file)  
     assert "Eve" in sf.students
 
