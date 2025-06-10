@@ -81,25 +81,34 @@ class StudentFile:
     
 ## Method to concatenate two student files
     def concat_two_files(self, other):
-        combined = {**self.students}
+        combined = {**self.students} ## Use dictionary unpacking to start with the current file's students
+        ## Iterate through each additional file
         for name, points in other.students.items():
             combined[name] = max(points, combined.get(name, 0))
 ## Create a new file 
-        new_filename = f"combined_{self.subject}_{other.subject}.txt"
+        new_filename = f"combined_{self.subject}_{other.subject}.txt" ## Create a new filename for the combined file
+        ## Write the combined results to the new file
         with open(new_filename, "w") as f:
+            ## Sort the combined dictionary by student names and write to file
+            ## Using sorted to ensure consistent order
             for name, points in sorted(combined.items()):
                 f.write(f"{name}, {points}\n")
         return StudentFile(new_filename)
+
 ## Method to concatenate multiple student files
     def concat_multiple(self, *others):
-        combined = {**self.students}
-        for other in others:
-            for name, points in other.students.items():
+        combined = {**self.students} ## Use dictionary unpacking to start with the current file's students
+        ## Iterate through each additional file
+        for other in others: 
+            for name, points in other.students.items(): ##
                 combined[name] = max(points, combined.get(name, 0))
 
 ## Create a new file with combined results
-        new_filename = f"multi_combined_{self.subject}.txt"
+        new_filename = f"multi_combined_{self.subject}.txt" ## Create a new filename for the combined file
+        ## Write the combined results to the new file
         with open(new_filename, "w") as f:
+            ## Sort the combined dictionary by student names and write to file
+            ## Using sorted to ensure consistent order
             for name, points in sorted(combined.items()):
                 f.write(f"{name}, {points}\n")
         return StudentFile(new_filename)
